@@ -4,12 +4,12 @@
  *  Created on: Feb 22, 2020
  *      Author: Ivan Khodyrev
  */
-#include "../headers/Device_Manadger.h"
-#include "../headers/Game_Basic.h"
+#include "../includes/Device_Manadger.h"
+#include "../includes/Game_Basic.h"
 
-#include "../headers/Flappy_Bird.h"
-#include "../headers/Snake.h"
-#include "../headers/Test.h"
+#include "../includes/Flappy_Bird.h"
+#include "../includes/Snake.h"
+#include "../includes/Test.h"
 
 unsigned char gamesCount = 3;
 char *games[] = { "Snake", "Flying ball", "Test" };

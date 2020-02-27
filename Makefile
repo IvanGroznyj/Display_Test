@@ -1,26 +1,24 @@
-CC=avr-gcc
-CCFLAGS=-g -mmcu=atmega32
-HEXFLAGS=-j .text -j .data -O ihex
+# Created by Makefile Builder by Ivan Khodyrev
+# *** variables ***
+compilator=avr-gcc
+compilator_flags=-g -mmcu=atmega32
+linker=avr-gcc
+linker_flags=-g -mmcu=atmega32
+debug_dir=Debug
+source_dir=src
+files=$(wildcard ./$(source_dir)/*.c)
+objects=$(patsubst ./$(source_dir)/%.c, ./$(debug_dir)/%.o, $(files))
+executable=display-test
+# *** instructions ***
+./$(debug_dir)/%.o: ./$(source_dir)/%.c
+	$(compilator) $(compilator_flags) -Wall -Os -c $< -o $@
 
-EXECUTABLE=Display-Test
-SOURCECODE=src
-DEBUGDIR=Debug
-FILES=$(wildcard ./$(SOURCECODE)/*.c)
-OBJECTS=$(patsubst ./$(SOURCECODE)/%.c, ./$(DEBUGDIR)/%.o, $(FILES))
+all: $(objects)
+	$(linker) $(linker_flags) -o ./$(debug_dir)/$(executable).elf $(objects)
+	avr-objcopy -j .text -j .data -O ihex ./$(debug_dir)/$(executable).elf ./$(debug_dir)/$(executable).hex
 
-./$(DEBUGDIR)/%.o: ./$(SOURCECODE)/%.c
-	${CC} ${CCFLAGS} -Wall -Os -c $< -o $@
+clean: 
+	rm -rf $(debug_dir)/*
 
-all: $(OBJECTS)
-	${CC} ${CCFLAGS} -o ./$(DEBUGDIR)/${EXECUTABLE}.elf ${OBJECTS}
-	avr-objcopy -j .text -j .data -O ihex ./$(DEBUGDIR)/${EXECUTABLE}.elf ./$(DEBUGDIR)/${EXECUTABLE}.hex
-	
-flash:
-	avrdude -p m32 -c usbasp -P usb -U flash:w:./$(DEBUGDIR)/${EXECUTABLE}.hex
-
-clean:
-	rm -rf ./$(DEBUGDIR)/*.o ./$(DEBUGDIR)/$(EXECUTABLE).*
-	
-docs:
-	doxygen
-	firefox html/index.html
+flash: 
+	avrdude -p m32 -c usbasp -P usb -U flash:w:./$(debug_dir)/$(executable).hex

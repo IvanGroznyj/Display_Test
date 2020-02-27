@@ -5,8 +5,8 @@
  *  Author: Ivan Khodyrev
  */
 
-#include "../headers/Device_Manadger.h"
-#include "../headers/Game_Basic.h"
+#include "../includes/Device_Manadger.h"
+#include "../includes/Game_Basic.h"
 
 #define SNAKE_MAX_LENGTH 100
 

@@ -5,8 +5,8 @@
  *  Author: Nazarec
  */
 
-#include "../headers/Device_Manadger.h"
-#include "../headers/Game_Basic.h"
+#include "../includes/Device_Manadger.h"
+#include "../includes/Game_Basic.h"
 
 void Start_Test() {
 	Lcd_Drawing_Init();

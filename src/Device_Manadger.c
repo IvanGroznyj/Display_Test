@@ -5,8 +5,8 @@
  *      Author: Ivan Khodyrev
  */
 
-#include "../headers/Device_Manadger.h"
-#include "../headers/Micro_Controller.h"
+#include "../includes/Device_Manadger.h"
+#include "../includes/Micro_Controller.h"
 
 unsigned char lcd_width = 128;
 unsigned char lcd_height = 64;
@@ -65,7 +65,7 @@ void Lcd_Text_Init() {
 
 void Lcd_Text_Write_Symbols(unsigned char x, unsigned char y, const char *text) {
 	if (x >= 0 && x < lcd_width / 8 && y >= 0 && y < lcd_height / 32) {
-		Lcd_Send_Command(0b10000000 + y * 16 + x);
+		Lcd_Send_Command(x_zero + y * 16 + x);
 
 		const char *p = text;
 		while (*p != '\0') {

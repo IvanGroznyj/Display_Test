@@ -5,8 +5,8 @@
  *  Author: Ivan Khodyrev
  */
 
-#include "../headers/Device_Manadger.h"
-#include "../headers/Game_Basic.h"
+#include "../includes/Device_Manadger.h"
+#include "../includes/Game_Basic.h"
 
 unsigned char clmns_coords[4][2]; // x clmn position, y top hall position
 unsigned char last_clmn_index;
