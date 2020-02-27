@@ -16,7 +16,10 @@ executable=display-test
 all: $(objects)
 	$(linker) $(linker_flags) -o ./$(debug_dir)/$(executable).elf $(objects)
 	avr-objcopy -j .text -j .data -O ihex ./$(debug_dir)/$(executable).elf ./$(debug_dir)/$(executable).hex
-
+	
+virtual:
+	gcc -o $(debug_dir)/$(executable) $(source_dir)/*.c
+	
 clean: 
 	rm -rf $(debug_dir)/*
 

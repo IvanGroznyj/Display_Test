@@ -1,5 +1,5 @@
 /*
- * Buttons.c
+ * Device_Manadger_MC.c
  *
  *  Created on: Feb 22, 2020
  *      Author: Ivan Khodyrev
@@ -7,6 +7,8 @@
 
 #include "../includes/Device_Manadger.h"
 #include "../includes/Micro_Controller.h"
+
+#if MODE==MC_MODE
 
 unsigned char lcd_width = 128;
 unsigned char lcd_height = 64;
@@ -157,3 +159,5 @@ unsigned char Lcd_Drawing_Display_Get_Pixel(unsigned char x, unsigned char y) {
 	return (display_map[iy][ix / 8] >> (7 - ix % 8)) % 2;
 }
 //*** END DRAWING MODE ***
+
+#endif

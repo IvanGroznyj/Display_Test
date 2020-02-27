@@ -123,23 +123,23 @@ void Start_Snake() {
 		btn = Get_Pressed_Button();
 		switch (btn) {
 		case Btn_Right:
-			if (direct != 3) {
-				direct = 1;
+			if (direct != direct_left) {
+				direct = direct_right;
 			}
 			break;
 		case Btn_Up:
-			if (direct != 2) {
-				direct = 0;
+			if (direct != direct_down) {
+				direct = direct_up;
 			}
 			break;
 		case Btn_Left:
-			if (direct != 1) {
-				direct = 3;
+			if (direct != direct_right) {
+				direct = direct_left;
 			}
 			break;
 		case Btn_Down:
-			if (direct != 0) {
-				direct = 2;
+			if (direct != direct_up) {
+				direct = direct_down;
 			}
 			break;
 		case Btn_Reset:

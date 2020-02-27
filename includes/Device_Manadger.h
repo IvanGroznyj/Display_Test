@@ -1,19 +1,27 @@
 /*
- * Buttons.h
+ * Device_Manadger.h
  *
  *  Created on: Feb 22, 2020
  *      Author: Ivan Khodyrev
  */
 
+#include "Compile_Mode.h"
+
 #ifndef DEVICE_MANADGER_H_
 #define DEVICE_MANADGER_H_
 
-#define F_CPU 1000000UL
 
-#include <util/delay.h>
+#if MODE==MC_MODE
+	#define Delay_ms(n) _delay_ms(n)
+	#define Delay_us(n) _delay_us(n)
 
-#define Delay_ms(n) _delay_ms(n)
-#define Delay_us(n) _delay_us(n)
+	#define F_CPU 1000000UL
+
+	#include <util/delay.h>
+#else
+	void Delay_ms(int n);
+	void Delay_us(int n);
+#endif
 
 extern unsigned char lcd_width;
 extern unsigned char lcd_height;
